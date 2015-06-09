@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
-# Does steganography on a message by using similar-looking unicode characters
 # Mitchell Vitez, 6/8/15
 
+"""
+Does steganography on a message by using similar-looking unicode characters
+"""
+
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
+# TODO: Fill in the rest of the unicode alphabet
 unicodeAlphabet = [u'\u212B', u'\u212C', u'\u2102']
 END_OF_ASCII = 256
 
@@ -29,14 +33,14 @@ def decode(message):
 	return convertString(message, False)
 
 def desteg(message):
+	message = unicode(message, 'utf-8')
 	desteggedMessage = []
 	for char in message:
+		# ignore chars that are already ascii
 		if ord(char) > END_OF_ASCII:
 			desteggedMessage.append(char)
-		else:
-			pass # ignore chars that are already ascii
 	return ''.join(desteggedMessage)
 
 if __name__ == '__main__':
-	message = raw_input('What is your message? ')
+	message = raw_input('What is your message?\n')
 	print 'Destegged message is: ' + desteg(message)
