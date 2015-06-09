@@ -17,20 +17,18 @@ END_OF_ASCII = 128
 def unicodeToAscii(character):
 	if character in unicodeAlphabet:
 		return alphabet[unicodeAlphabet.index(character)]
-	else:
-		return ''
+	return ''
 
 def asciiToUnicode(character):
 	if character in alphabet:
 		return unicodeAlphabet[alphabet.index(character)]
-	else:
-		return ''
+	return ''
 
-def convertString(message, steg):
+def convertString(message, isEncode):
 	message = message.lower()
 	charList = []
 	for char in message:
-		if steg:
+		if isEncode:
 			charList.append(asciiToUnicode(char))
 		else:
 			charList.append(unicodeToAscii(char))
@@ -43,7 +41,6 @@ def decode(message):
 	return convertString(message, False)
 
 def desteg(message):
-	message = unicode(message, 'utf-8')
 	desteggedMessage = []
 	for char in message:
 		# ignore chars that are already ascii
@@ -52,5 +49,6 @@ def desteg(message):
 	return ''.join(desteggedMessage)
 
 if __name__ == '__main__':
-	message = raw_input('What is your message?\n')
-	print 'Destegged message is: ' + desteg(message)
+	import fileinput
+	for message in fileinput.input():
+		print desteg(message)
