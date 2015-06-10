@@ -1,5 +1,9 @@
 # Mitchell Vitez, 6/10/15
 
+"""
+Insignificant Bits - Hides text messages in green pixels of images
+"""
+
 from PIL import Image
 import sys
 
@@ -59,8 +63,6 @@ def insertMessage(filename, message):
 
 	binaryMessage = ''.join(format(ord(char), '08b') for char in message)
 	messagePos = 0
-
-	print binaryMessage
 
 	for x in xrange(old.size[0]):
 		for y in xrange(old.size[1]):

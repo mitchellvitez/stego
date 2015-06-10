@@ -88,3 +88,6 @@ if __name__ == '__main__':
 	import fileinput
 	for message in fileinput.input():
 		print decodePrayer(message)
+
+	# message = "YOUR MESSAGE HERE"
+	# print encodePrayer(message)

@@ -52,3 +52,6 @@ if __name__ == '__main__':
 	import fileinput
 	for message in fileinput.input():
 		print desteg(message)
+
+	# message = "YOUR MESSAGE HERE"
+	# print encode(message)
