@@ -87,4 +87,4 @@ def encodePrayer(message):
 if __name__ == '__main__':
 	import fileinput
 	for message in fileinput.input():
-		print encodePrayer(message)
+		print decodePrayer(message)
