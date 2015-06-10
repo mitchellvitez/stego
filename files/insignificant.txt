@@ -1,0 +1,2 @@
+files/insignificant.png
+Hiding messages in images is fun
