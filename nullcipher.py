@@ -25,6 +25,15 @@ def cycleThroughChars(word):
 	cycleCount += 1
 	return word[ cycleCount % len(word) ]
 
+K = 3
+wordCount = -1
+def everyKthWord(word):
+	global wordCount
+	wordCount += 1
+	if wordCount % K == 0:
+		return word + ' '
+	return ''
+
 if __name__ == '__main__':
 	import fileinput
 	for message in fileinput.input():
