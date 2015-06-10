@@ -74,15 +74,14 @@ def encodePrayer(message):
 	isNoun = True
 	for letter in message:
 		letter = letter.lower()
-		if not letter.isalpha():
-			continue
-		if isNoun:
-			words.append(nouns[letter])
-		else:
-			words.append(adjectives[letter])
-			words.append(',')
-		words.append(' ')
-		isNoun = random.random() < PERCENT_NOUNS
+		if letter.isalpha():
+			if isNoun:
+				words.append(nouns[letter])
+			else:
+				words.append(adjectives[letter])
+				words.append(',')
+			words.append(' ')
+			isNoun = random.random() < PERCENT_NOUNS
 	return ''.join(words)
 
 if __name__ == '__main__':
