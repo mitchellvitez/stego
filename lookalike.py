@@ -24,21 +24,18 @@ def asciiToUnicode(character):
 		return unicodeAlphabet[alphabet.index(character)]
 	return ''
 
-def convertString(message, isEncode):
+def convertString(message, encodingFunc):
 	message = message.lower()
 	charList = []
 	for char in message:
-		if isEncode:
-			charList.append(asciiToUnicode(char))
-		else:
-			charList.append(unicodeToAscii(char))
+		charList.append(encodingFunc(char))
 	return ''.join(charList)
 
 def encode(message):
-	return convertString(message, True)
+	return convertString(message, asciiToUnicode)
 
 def decode(message):
-	return convertString(message, False)
+	return convertString(message, unicodeToAscii)
 
 def desteg(message):
 	desteggedMessage = []
