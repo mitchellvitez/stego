@@ -7,10 +7,11 @@ Insignificant Bits - Hides text messages in green pixels of images
 from PIL import Image
 import sys
 
-MAX_FOUND_MESSAGE_LENGTH = 1000
+MAX_MESSAGE_CHARS = 1000
+MAX_MESSAGE_BITS = 8 * MAX_MESSAGE_CHARS
 
-def isEven(green):
-	return green % 2 == 0
+def isEven(num):
+	return num % 2 == 0
 
 def getBit(pixel):
 	if isEven(pixel[1]):
@@ -22,7 +23,7 @@ def getBitsFromImage(img, imgPix):
 	for x in xrange(img.size[0]):
 		for y in xrange(img.size[1]):
 			bits.append(getBit(imgPix[x, y]))
-			if len(bits) > 8 * MAX_FOUND_MESSAGE_LENGTH:
+			if len(bits) > MAX_MESSAGE_BITS:
 				return bits
 	return bits
 
