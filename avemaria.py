@@ -69,19 +69,25 @@ def decodePrayer(message):
 		letters.append(reverse_adjectives.get(word, ''))
 	return ''.join(letters)
 
+# if false, should be an adjective instead
+isFirstWord = True
+def isNoun():
+	global isFirstWord
+	if isFirstWord:
+		return True
+	isFirstWord = False
+	return random.random() < PERCENT_NOUNS
+
 def encodePrayer(message):
 	words = []
-	isNoun = True
 	for letter in message:
 		letter = letter.lower()
 		if letter.isalpha():
-			if isNoun:
+			if isNoun():
 				words.append(nouns[letter])
 			else:
-				words.append(adjectives[letter])
-				words.append(',')
+				words.append(adjectives[letter] + ',')
 			words.append(' ')
-			isNoun = random.random() < PERCENT_NOUNS
 	return ''.join(words)
 
 if __name__ == '__main__':
